@@ -27,7 +27,8 @@ CRSP
 
 CIQ subsidiary names
 
-### Clean data
+### Clean name
+Run [trademark_name_process.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/trademark_name_process.py)
 
 ### Bing Search
 
