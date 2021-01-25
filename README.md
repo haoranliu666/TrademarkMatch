@@ -1,36 +1,8 @@
-# TMA_match
+step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blob/main/steps.md)
 
-### Get data
 
-[USPTO Trademark](https://www.uspto.gov/learning-and-resources/electronic-data-products/trademark-assignment-dataset)
-- 2019 Assignor DTA
-- Run in stata:
-```stata
-keep rf_id or_name
-duplicates drop
-save trademark
-```
+### Time line
 
-[Compustat](https://wrds-web.wharton.upenn.edu/wrds/ds/comp/funda/index.cfm?navId=80)
-- Step1: Fiscal year; 1950-01 to 2019-07
-- Step2: GVKEY; Search the entire database
-- Step3: Data items; CONML
-- Step4: STATA v14+ file
-- Run in stata:
-```stata
-keep gvkey conml
-duplicates drop
-save compustat
-```
-
-CRSP
-
-CIQ subsidiary names
-
-### Clean name
-Run [trademark_name_process.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/trademark_name_process.py)
-Run [compustat_name_process.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/compustat_name_process.py)
-
-### Bing Search
-
-### Match
+2021/01/25
+- I refactored the Clean_name code, reduced redundant clean steps, changed dict to list for restoring cleaned data.
+- Known issues: some names are long because they contain an explanation of the company; some names contain strange characters like &2942, and the meaning is unknown; whether the [mapping](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/dict_char_replace.json) is optimized is still unknown
