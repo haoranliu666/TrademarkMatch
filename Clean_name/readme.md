@@ -1,3 +1,5 @@
+The clean name process is for providing a better result from the bing engine, but the difficult part is defining 'better result'. Since a little different change in the mapping process can make the bing result different, like "pacific gas & electric co" and "pacific gas electric co" have slightly different search result, in terms of the content and ranking. The clean name process can have an impact on the final mapping result.
+
 clean name，为了让bing返回更好的搜索结果。但是，如何判断“搜索结果”更好？
 
 比如，pacific gas & electric co 中的 & 要不要删除掉？
