@@ -111,11 +111,11 @@ for i in range(0, len(list_conm_afcharc)):
 
 
 # pickle list
-with open('list_compustat_gvkey.piclke', 'wb') as handle:
+with open('list_compustat_gvkey.pickle', 'wb') as handle:
     pickle.dump(list_gvkey, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('list_compustat_conml.piclke', 'wb') as handle:
+with open('list_compustat_conml.pickle', 'wb') as handle:
     pickle.dump(list_old_conm, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open('list_compustat_newname.piclke', 'wb') as handle:
+with open('list_compustat_newname.pickle', 'wb') as handle:
     pickle.dump(list_conm_afcharc, handle, protocol=pickle.HIGHEST_PROTOCOL)
