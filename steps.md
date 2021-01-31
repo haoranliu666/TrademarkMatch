@@ -11,6 +11,13 @@ duplicates drop
 save trademark
 ```
 
+[CRSP](https://wrds-web.wharton.upenn.edu/wrds//ds/crsp/stock_a/stkhdr.cfm)
+- Step1: PERMNO
+- Step2: Search the entire database
+- Step3: Company Name Header
+
+
+
 [Compustat](https://wrds-web.wharton.upenn.edu/wrds/ds/comp/funda/index.cfm?navId=80)
 - Step1: Fiscal year; 1950-01 to 2019-07
 - Step2: GVKEY; Search the entire database
@@ -23,7 +30,7 @@ duplicates drop
 save compustat
 ```
 
-CRSP
+
 
 CIQ subsidiary names
 
