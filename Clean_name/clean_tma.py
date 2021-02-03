@@ -1,5 +1,4 @@
 import json
-import pickle
 import re
 
 import pandas as pd
@@ -112,11 +111,11 @@ for i in range(0, len(list_conm_afcharc)):
     newname = us_re.sub('us', newname)
     list_conm_afcharc[i] = newname
 
-with open('list_trademark_id.piclke', 'wb') as handle:
-    pickle.dump(list_id, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('list_trademark_id.json', 'w') as handle:
+    json.dump(list_id, handle, indent=2)
 
-with open('list_trademark_conm.piclke', 'wb') as handle:
-    pickle.dump(list_old_conm, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('list_trademark_conm.json', 'w') as handle:
+    json.dump(list_old_conm, handle, indent=2)
 
-with open('list_trademark_newname.piclke', 'wb') as handle:
-    pickle.dump(list_conm_afcharc, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('list_trademark_newname.json', 'w') as handle:
+    json.dump(list_conm_afcharc, handle, indent=2)
