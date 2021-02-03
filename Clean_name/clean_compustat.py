@@ -1,5 +1,4 @@
 import json
-import pickle
 import re
 
 import pandas as pd
@@ -110,12 +109,12 @@ for i in range(0, len(list_conm_afcharc)):
     list_conm_afcharc[i] = newname
 
 
-# pickle list
-with open('list_compustat_gvkey.pickle', 'wb') as handle:
-    pickle.dump(list_gvkey, handle, protocol=pickle.HIGHEST_PROTOCOL)
+# json list
+with open('list_compustat_gvkey.json', 'w') as handle:
+    json.dump(list_gvkey, handle, indent=2)
 
-with open('list_compustat_conml.pickle', 'wb') as handle:
-    pickle.dump(list_old_conm, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('list_compustat_conml.json', 'w') as handle:
+    json.dump(list_old_conm, handle, indent=2)
 
-with open('list_compustat_newname.pickle', 'wb') as handle:
-    pickle.dump(list_conm_afcharc, handle, protocol=pickle.HIGHEST_PROTOCOL)
+with open('list_compustat_newname.json', 'w') as handle:
+    json.dump(list_conm_afcharc, handle, indent=2)
