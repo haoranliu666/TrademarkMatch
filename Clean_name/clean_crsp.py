@@ -1,6 +1,7 @@
-import pandas as pd
 import json
 import re
+
+import pandas as pd
 
 data = pd.read_stata('crsp.dta')
 data_nodup = data.drop_duplicates('HCOMNAM')
