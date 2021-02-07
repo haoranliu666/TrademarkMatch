@@ -52,28 +52,18 @@ for i in range(0, len(list_conm)):
     if newname != name:
         list_conm[i] = newname
 
+
+
 # clean every char to correct ones
-list_conm_afcharc = []
-
-garbage = []
-for i in range(0, 33):
-    garbage.append(chr(ord('\x80') + i))
-
-garbage.append('\xad')
-
-# dict_replace gives the correct char to replace the old one
 with open('dict_char_replace.json', 'r') as f:
     dict_replace = json.load(f)
 
+list_conm_afcharc = []
 for i in range(0, len(list_conm)):
     name = list_conm[i]
     newchar_list = []
     for char in name:
-        if char == "\"":
-            newchar_list.append(" ")
-        elif char in garbage:
-            newchar_list.append(" ")
-        elif char != ' ':
+        if char != ' ':
             newchar_list.append(dict_replace[char])
         else:
             newchar_list.append(' ')
