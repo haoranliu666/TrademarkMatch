@@ -14,22 +14,6 @@ for i in range(0, len(list_old_conm)):
     name = list_old_conm[i].lower()  # lower case
     list_conm.append(name)
 
-# save all characters in company names
-dict_clean_char = {}  # a dict, key = characters, value = [(gvkey, name), ...]
-for i in range(0, len(list_gvkey)):
-    name = list_conm[i]
-    for char in name:
-        if char != " ":
-            gvkey = list_gvkey[i]
-            if char not in dict_clean_char:
-                dict_clean_char[char] = [(gvkey, name)]  # create new key
-            else:
-                dict_clean_char[char].append((gvkey, name))
-
-list_char = list(dict_clean_char.keys())
-list_char.sort()  # all characters list
-
-
 # replace ., to space
 for i in range(0, len(list_conm)):
     name = list_conm[i]
@@ -38,7 +22,6 @@ for i in range(0, len(list_conm)):
         list_conm[i] = newname
 
 # replacce x.y.z to xyz
-
 
 def fix_pattern(name, i):  # i from 10 to 1
     temp_re = re.compile(r'\b(\w)' + i*r'\.(\w)\b')  # x.x.x
@@ -61,7 +44,9 @@ for i in range(0, len(list_conm)):
     if newname != name:
         list_conm[i] = newname
 
-# replace characters using the dict
+
+
+# map
 with open('dict_char_replace.json', 'r') as f:
     dict_replace = json.load(f)
 
