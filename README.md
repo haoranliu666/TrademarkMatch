@@ -3,6 +3,11 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 ### Time line
 
+2021/02/07
+- Added CIQ clean process, updated compustat and tma clean process.
+- Added matching process, using maximiumed weight function to define matched.
+- Known issues: futher step on cleaning: combine name files, reduce duplicated ones.
+
 2021/02/03
 - Added CRSP clean process.
 - Replaced json to pickle for saving data in overall code.
