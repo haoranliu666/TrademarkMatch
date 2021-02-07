@@ -1,25 +1,19 @@
-The clean name process is for providing a better result from the bing engine, but the difficult part is defining 'better result'. Since a little different change in the mapping process can make the bing result different, like "pacific gas & electric co" and "pacific gas electric co" have slightly different search result, in terms of the content and ranking. The clean name process can have an impact on the final mapping result.
+In CIQ sub names, strange things happened, and they are manually solved.
 
-clean name，为了让bing返回更好的搜索结果。但是，如何判断“搜索结果”更好？
+4 patterns appeared in CIQ sub name strings:
 
-比如，pacific gas & electric co 中的 & 要不要删除掉？
+- \u00e2\u0080\uXXXX
+- \u00e2\uXXXX
+- \u00e3\uXXXX
+- \u00e5\uXXXX
 
+where \uXXXX can be a variety of codes, and the codes before \uXXXX are like prefixes which make \uXXXX have different meanings.
 
+For example:
 
-什么才是“搜索结果”更好？
+- "belulu limited (\u00e2\u0080\u009cbelulu\u00e2\u0080\u009d)"
+- "iskone denim pazarlama a\u00e2\u00a7."
+- "genmar orman \u00e3\u009cr\u00e3\u009cnleri pazarlama ve ticaret a.s."
+- "\u00e5\u00bdemes vystymo fondas 21 uab."
 
-搜索结果量更多？
-
-底线：不能有空返回值
-
-人为判断，搜索结果的优度？比如同样返回满50个搜索值，但是有的方法搜索结果很差？
-
-
-
-
-
-目前采用的方法：对比20个左右的搜索结果，如果没有明显改进，就采用原始结果
-
-
-
-很难判断什么dict更适合搜索
+These combinations of symbols have will produce bad bing search results. They are actually exotic symbols, like ancient European characters, euro/pound signs, and so on.  So I use 4 json - dict files [00e20080.json](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/00e20080.json), [00e2.json](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/00e2.json), [00e3.json](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/00e3.json), and [00e5.json](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/00e5.json) to replace these strange combinations of codes. These four json files are like dictionaries, on the left is the strange codes, and on the left is the translation, which is manually checked by me.
