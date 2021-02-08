@@ -2,15 +2,6 @@
 
 ### Get data
 
-[USPTO Trademark](https://www.uspto.gov/learning-and-resources/electronic-data-products/trademark-assignment-dataset)
-- 2019 Assignor DTA
-- Run in stata:
-```stata
-keep rf_id or_name
-duplicates drop
-save trademark
-```
-
 [CRSP](https://wrds-web.wharton.upenn.edu/wrds//ds/crsp/stock_a/stkhdr.cfm)
 - Step1: PERMNO
 - Step2: Search the entire database
@@ -31,12 +22,25 @@ save compustat
 ```
 
 
+[CIQ subsidiary names](https://www.capitaliq.com/)
 
-CIQ subsidiary names
+
+
+[USPTO Trademark Assignment Dataset](https://www.uspto.gov/learning-and-resources/electronic-data-products/trademark-assignment-dataset)
+- 2019 Assignor DTA
+- Run in stata:
+```stata
+keep rf_id or_name
+duplicates drop
+save trademark
+```
+
+
+
+[USPTO Trademark Case Files Dataset](https://www.uspto.gov/learning-and-resources/electronic-data-products/trademark-case-files-dataset-0)
 
 ### Clean name
-Run [trademark_name_process.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/trademark_name_process.py)
-Run [compustat_name_process.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/compustat_name_process.py)
+Run [clean_crsp.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_crsp.py), [clean_compustat.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_compustat.py), [clean_ciq.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_ciq.py), [clean_tma.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_tma.py).
 
 ### Bing Search
 
