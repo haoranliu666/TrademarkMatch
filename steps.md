@@ -46,6 +46,7 @@ drop if own_entity_cd==1
 sort own_name own_addr*
 bys own_name own_addr* : keep if _n==1 
 keep own_id own_name
+sort own_id
 save tmc
 ```
 
