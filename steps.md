@@ -42,8 +42,10 @@ save tma
 - Run in stata:
 ```stata
 *drop the individual owner 
-drop if own_entity_cd==1 
-keep own_id serial_no own_name
+drop if own_entity_cd==1
+sort own_name own_addr*
+bys own_name own_addr* : keep if _n==1 
+keep own_id own_name
 save tmc
 ```
 
