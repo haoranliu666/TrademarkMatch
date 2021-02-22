@@ -32,12 +32,20 @@ save compustat
 ```stata
 keep rf_id or_name
 duplicates drop
-save trademark
+save tma
 ```
 
 
 
 [USPTO Trademark Case Files Dataset](https://www.uspto.gov/learning-and-resources/electronic-data-products/trademark-case-files-dataset-0)
+- 2019 Owner DTA
+- Run in stata:
+```stata
+*drop the individual owner 
+drop if own_entity_cd==1 
+keep own_id serial_no own_name
+save tmc
+```
 
 ### Clean name
 Run [clean_crsp.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_crsp.py), [clean_compustat.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_compustat.py), [clean_ciq.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_ciq.py), [clean_tma.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_tma.py).
