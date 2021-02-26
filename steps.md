@@ -43,9 +43,8 @@ save tma
 ```stata
 *drop the individual owner 
 drop if own_entity_cd==1
-sort own_name own_addr*
-bys own_name own_addr* : keep if _n==1 
-keep own_id own_name
+keep own_name own_id
+bys own_name: keep if _n==1
 sort own_id
 save tmc
 ```
