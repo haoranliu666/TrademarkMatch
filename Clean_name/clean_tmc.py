@@ -3,17 +3,24 @@ import re
 
 import pandas as pd
 
-data = pd.read_stata('crsp.dta')
-data_nodup = data.drop_duplicates('HCOMNAM')
+data_nodup = pd.read_stata('tmc.dta')
 
-list_id = list(data_nodup['PERMNO'])
-list_old_conm = list(data_nodup['HCOMNAM'])
+list_id = list(data_nodup['own_id'])
+
+list_old_conm = list(data_nodup['own_name'])
 list_conm = []
 for i in range(0, len(list_old_conm)):
     name = list_old_conm[i].lower()  # lower case
     list_conm.append(name)
 
-# replace ., to space
+post = r"( |\()a corp.*of.*$"  # "a corp... of..."
+post_re = re.compile(post)
+for i in range(0, len(list_conm)):
+    name = list_conm[i]
+    newname = post_re.sub('', name)
+    list_conm[i] = newname
+
+# change ., to space
 for i in range(0, len(list_conm)):
     name = list_conm[i]
     if '.,' in name:
@@ -21,6 +28,7 @@ for i in range(0, len(list_conm)):
         list_conm[i] = newname
 
 # replacce x.y.z to xyz
+
 
 def fix_pattern(name, i):  # i from 10 to 1
     temp_re = re.compile(r'\b(\w)' + i*r'\.(\w)\b')  # x.x.x
@@ -45,7 +53,7 @@ for i in range(0, len(list_conm)):
 
 
 
-# map
+# clean every char to correct ones
 with open('dict_char_replace.json', 'r') as f:
     dict_replace = json.load(f)
 
@@ -54,7 +62,7 @@ for i in range(0, len(list_conm)):
     name = list_conm[i]
     newchar_list = []
     for char in name:
-        if char != ' ':
+        if char != ' ' and char != '\x7f':
             newchar_list.append(dict_replace[char])
         else:
             newchar_list.append(' ')
@@ -92,7 +100,6 @@ for i in range(0, len(list_conm_afcharc)):
     name0 = name0.replace('corporation', ' corp ')
     list_conm_afcharc[i] = name0
 
-#    name0 = name0.replace(' limited ', ' ltd ')  ###middle
 #limited
 white0_re = re.compile(r" limited$")
 for i in range(0, len(list_conm_afcharc)):
@@ -124,12 +131,11 @@ for i in range(0, len(list_conm_afcharc)):
     newname = us_re.sub('us', newname)
     list_conm_afcharc[i] = newname
 
-# pickle list
-with open('list_crsp_permno.json', 'w') as handle:
+with open('list_tmc_id.json', 'w') as handle:
     json.dump(list_id, handle, indent=2)
 
-with open('list_crsp_hcomnam.json', 'w') as handle:
+with open('list_tmc_conm.json', 'w') as handle:
     json.dump(list_old_conm, handle, indent=2)
 
-with open('list_crsp_newname.json', 'w') as handle:
+with open('list_tmc_newname.json', 'w') as handle:
     json.dump(list_conm_afcharc, handle, indent=2)

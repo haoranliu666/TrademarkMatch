@@ -105,6 +105,102 @@ for i in range(0, len(list_conm)):
     newname = ''.join(newchar for newchar in newchar_list)
     list_conm_afcharc.append(newname)
 
+
+# check what left
+# with open('dict_char_replace.json', 'r') as f:
+#     dict_replace = json.load(f)
+
+# temp = {}#
+# list_conm_afcharc = []
+# for i in range(0, len(list_conm)):
+#     name = list_conm[i]
+#     newchar_list = []
+#     for char in name:
+#         if char != ' ':
+#             if char in dict_replace.keys():#
+#                 newchar_list.append(dict_replace[char])
+#             else:#
+#                 if char in temp.keys():
+#                     temp[char].append(name)
+#                 else:
+#                     temp[char] = []
+#                     temp[char].append(name)
+#         else:
+#             newchar_list.append(' ')
+#     newname = ''.join(newchar for newchar in newchar_list)
+#     list_conm_afcharc.append(newname)
+
+# with open('temp.json', 'w') as handle:
+#     json.dump(temp, handle, indent=2)
+
+# ###00e20080
+# temp = {}
+# for i in range(0, len(list_conm)):
+#     name = list_conm[i]
+#     for j in range(0, len(name)):
+#         if name[j] == '\u00e2' and name[j+1] == '\u0080':
+#             print(name)
+#             if name[j+2] in temp.keys():
+#                 temp[name[j+2]].append(name)
+#             else:
+#                 temp[name[j+2]] = []
+#                 temp[name[j+2]].append(name)
+
+# with open('temp0080.json', 'w') as handle:
+#     json.dump(temp, handle, indent=2)
+
+# 00e5
+# temp = {}
+# for i in range(0, len(list_conm)):
+#     name = list_conm[i]
+#     for j in range(0, len(name)):
+#         if name[j] == '\u00e5':
+#             print(name)
+#             if name[j+1] in temp.keys():
+#                 temp[name[j+1]].append(name)
+#             else:
+#                 temp[name[j+1]] = []
+#                 temp[name[j+1]].append(name)
+
+# with open('temp00e5.json', 'w') as handle:
+#     json.dump(temp, handle, indent=2)
+
+# ###00e2
+# temp = {}
+# for i in range(0, len(list_conm)):
+#     name = list_conm[i]
+#     for j in range(0, len(name)):
+#         if name[j] == '\u00e2':
+#             print(name)
+#             if name[j+1] in temp.keys():
+#                 temp[name[j+1]].append(name)
+#             else:
+#                 temp[name[j+1]] = []
+#                 temp[name[j+1]].append(name)
+
+# with open('temp00e2.json', 'w') as handle:
+#     json.dump(temp, handle, indent=2)
+
+# 00e3
+# temp = {}
+# for i in range(0, len(list_conm)):
+#     name = list_conm[i]
+#     for j in range(0, len(name)):
+#         if name[j] == '\u00e3':
+#             print(name)
+#             if name[j+1] in temp.keys():
+#                 temp[name[j+1]].append(name)
+#             else:
+#                 temp[name[j+1]] = []
+#                 temp[name[j+1]].append(name)
+
+# with open('temp00e3.json', 'w') as handle:
+#     json.dump(temp, handle, indent=2)
+
+# a = {}
+# for i in temp.keys():
+#     a[i] = ""
+
 # with open('xxx.json', 'w') as handle:
 #     json.dump(a, handle, indent=2)
 
@@ -116,6 +212,36 @@ dot2replace_re = re.compile(r"\. |\.$|^\.")
 for i in range(0, len(list_conm_afcharc)):
     name = list_conm_afcharc[i]
     newname = dot2replace_re.sub(' ', name)
+    list_conm_afcharc[i] = newname
+
+#ltd inc co llc
+for i in range(0, len(list_conm_afcharc)):
+    name0 = list_conm_afcharc[i]
+    name0 = name0.replace('.ltd.', ' ltd ')
+    name0 = name0.replace('.ltd', ' ltd ')
+    name0 = name0.replace('ltd.', ' ltd ')
+    name0 = name0.replace('.limited', ' ltd ')
+    name0 = name0.replace('.inc.', ' inc ')
+    name0 = name0.replace('.inc', ' inc ')
+    name0 = name0.replace('inc.', ' inc ')
+    name0 = name0.replace('incorporated', ' inc ')
+    name0 = name0.replace('incorporation', ' inc ')
+    name0 = name0.replace('.co', ' co ')
+    name0 = name0.replace('co.', ' co ')
+    name0 = name0.replace('company', ' co ')
+    name0 = name0.replace('.llc', ' llc ')
+    name0 = name0.replace('llc.', ' llc ')
+    name0 = name0.replace('corp.', ' corp ')
+    name0 = name0.replace('.corp', ' corp ')
+    name0 = name0.replace('.corporation', ' corp ')
+    name0 = name0.replace('corporation', ' corp ')
+    list_conm_afcharc[i] = name0
+
+#limited
+white0_re = re.compile(r" limited$")
+for i in range(0, len(list_conm_afcharc)):
+    name = list_conm_afcharc[i]
+    newname = white0_re.sub(' ltd', name)
     list_conm_afcharc[i] = newname
 
 # clean extra white space

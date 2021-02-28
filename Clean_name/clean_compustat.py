@@ -70,6 +70,37 @@ for i in range(0, len(list_conm_afcharc)):
     newname = dot2replace_re.sub(' ', name)
     list_conm_afcharc[i] = newname
 
+#ltd inc co llc
+for i in range(0, len(list_conm_afcharc)):
+    name0 = list_conm_afcharc[i]
+    name0 = name0.replace('.ltd.', ' ltd ')
+    name0 = name0.replace('.ltd', ' ltd ')
+    name0 = name0.replace('ltd.', ' ltd ')
+    name0 = name0.replace('.limited', ' ltd ')
+    name0 = name0.replace('.inc.', ' inc ')
+    name0 = name0.replace('.inc', ' inc ')
+    name0 = name0.replace('inc.', ' inc ')
+    name0 = name0.replace('incorporated', ' inc ')
+    name0 = name0.replace('incorporation', ' inc ')
+    name0 = name0.replace('.co', ' co ')
+    name0 = name0.replace('co.', ' co ')
+    name0 = name0.replace('company', ' co ')
+    name0 = name0.replace('.llc', ' llc ')
+    name0 = name0.replace('llc.', ' llc ')
+    name0 = name0.replace('corp.', ' corp ')
+    name0 = name0.replace('.corp', ' corp ')
+    name0 = name0.replace('.corporation', ' corp ')
+    name0 = name0.replace('corporation', ' corp ')
+    list_conm_afcharc[i] = name0
+
+#limited
+white0_re = re.compile(r" limited$")
+for i in range(0, len(list_conm_afcharc)):
+    name = list_conm_afcharc[i]
+    newname = white0_re.sub(' ltd', name)
+    list_conm_afcharc[i] = newname
+
+
 # clean extra white space
 white0_re = re.compile(r" +")
 for i in range(0, len(list_conm_afcharc)):
@@ -92,6 +123,9 @@ for i in range(0, len(list_conm_afcharc)):
     newname = usa_re.sub('usa', name)
     newname = us_re.sub('us', newname)
     list_conm_afcharc[i] = newname
+
+
+    
 
 
 # json list
