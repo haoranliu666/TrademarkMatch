@@ -3,6 +3,12 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 ### Time line
 
+2021/02/28
+- Added TMC clean process, updated all other clean processes.
+- Updated dict json.
+- Added combine_all_names.py
+- Known issues: Use string distance method reduce company name size.
+
 2021/02/07
 - Added CIQ clean process, updated compustat and tma clean process.
 - Added matching process, using maximiumed weight function to define matched.
