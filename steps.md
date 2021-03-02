@@ -43,6 +43,7 @@ save tma
 ```stata
 *drop the individual owner 
 drop if own_entity_cd==1
+drop if own_addr_state_cd==""
 keep own_name own_id
 bys own_name: keep if _n==1
 sort own_id
