@@ -24,8 +24,7 @@
 ### Clean name
 Run [.do files](https://github.com/FutureMathematician/TMA_match/tree/main/Clean_name/Pre_clean) in stata
 
-Run [clean_crsp.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_crsp.py), [clean_compustat.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_compustat.py), [clean_ciq.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_ciq.py), [clean_tma.py](https://github.com/FutureMathematician/TMA_match/blob/main/Clean_name/clean_tma.py).
-
+Run [.py files](https://github.com/FutureMathematician/TMA_match/tree/main/Clean_name/clean) using python3.8 with anaconda 4.8.3
 ### Bing Search
 
 ### Match
