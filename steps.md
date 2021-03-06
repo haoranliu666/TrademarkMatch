@@ -1,5 +1,20 @@
 # TMA_match
 
+> Needed Softwares & Packages:
+> 
+> Python 3.8.5
+>
+> Anaconda 4.9.2
+>
+> Stata 16.1
+>
+> [Textdistance 4.2.1](https://pypi.org/project/textdistance/)
+>
+> [Azure-cognitiveservices-search-websearch 2.0.0](https://pypi.org/project/azure-cognitiveservices-search-websearch/)
+
+
+
+
 ### Get data
 
 [CRSP](https://wrds-web.wharton.upenn.edu/wrds//ds/crsp/stock_a/stkhdr.cfm)
