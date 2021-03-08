@@ -3,6 +3,10 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 ### Time line
 
+2021/03/07
+- Separete pre-clean, clean and post-clean, to make the process clearer.
+- Known issue: CIQ clean process has bug.
+
 2021/03/04
 - Added post match process to reduce sample.
 - Added [Jaro–Winkler distance](https://en.wikipedia.org/wiki/Jaro–Winkler_distance) to find paired similiar company names, majorly caused by typo. Using city name data to make sure they are the same company.
