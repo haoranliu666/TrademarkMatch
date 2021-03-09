@@ -3,8 +3,13 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 ### Time line
 
+2021/03/09
+- Added cmatch.c, try to do the match process using C instead of Python for performance improvement, still in progress.
+- Known issue: CIQ clean process has bug.
+- Todo: Finish cmatch.
+
 2021/03/07
-- Separete pre-clean, clean and post-clean, to make clean process clearer.
+- Separeted pre-clean, clean and post-clean, to make clean process clearer.
 - Known issue: CIQ clean process has bug.
 
 2021/03/04
