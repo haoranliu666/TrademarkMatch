@@ -13,10 +13,13 @@ int fast_compare(const char *ptr0, const char *ptr1, int len);
 
 int main(void)
 {
-    /*
+    int set_len = 5;
+
+    /***********************************************************************
     READ TWO FILES
-    */
+    ************************************************************************/
     char *buffer;
+    int err;
 
     size_t length_0, length_1;
     size_t read_length_0, read_length_1;
@@ -24,8 +27,6 @@ int main(void)
     FILE * f_0 = fopen("url_dict_1.txt", "rb");
     FILE * f_1 = fopen("url_crsp_random.txt", "rb");
     
-    int err;
-
     if (f_0 && f_1)
     {
         // get file length
@@ -77,9 +78,11 @@ int main(void)
         exit(1);
     }
 
+    // file start pointer
     char * url_0 = buffer;
     char * url_1 = buffer + length_0 + 1;
 
+    // file length
     int url_len_0 = length_0;
     int url_len_1 = length_1;
 
@@ -91,9 +94,116 @@ int main(void)
         if(url_1[i] == '\n')
             url_1[i] = '\0';
 
-    /*
-    READ TWO FILES OVER
-    */
+    /***********************************************************************
+    READ TWO FILES OVER, START MAKING THE MATRICES
+    ************************************************************************/
+
+    int url_count_0 = 0;
+    int company_count_0 = 1;
+    for(int i = 2; i < length_0; i++){
+        if(url_0[i] == '\0'){
+            url_count_0++;
+            if(url_0[i+1] == '!' && url_0[i+2] == '\0'){
+                company_count_0++;
+                i++;
+                i++;
+            if(url_0[i+1] == '\0')
+                break;
+            }
+        }
+    }
+
+    int url_count_1 = 0;
+    int company_count_1 = 1;
+    for(int i = 2; i < length_1; i++){
+        if(url_1[i] == '\0'){
+            url_count_1++;
+            if(url_1[i+1] == '!' && url_1[i+2] == '\0'){
+                company_count_1++;
+                i++;
+                i++;
+            if(url_1[i+1] == '\0')
+                break;
+            }
+        }
+    }
+
+
+    int matrix_0[company_count_0][50];
+    for(int a = 0; a < company_count_0; a++)
+        for(int b = 0; b < 50; b++)
+            matrix_0[a][b] = -1;
+
+    matrix_0[0][0] = 2;
+    int a = 0;
+    int b = 0;
+    for(int i = 2; i < length_0; i++){
+        if(url_0[i] == '\0'){
+            b++;
+            if(url_0[i+1] == '!' && url_0[i+2] == '\0'){
+                i++;
+                i++;
+                a++;
+                b=0;
+            if(url_0[i+1] == '\0')
+                break;
+            }
+            matrix_0[a][b] = i + 1;
+        }
+    }
+
+    // for(int a = 0; a < company_count_0; a++)
+    //     for(int b = 0; b < 50; b++)
+    //         if(matrix_0[a][b] != -1){
+    //             puts(url_0 + matrix_0[a][b]);
+    //         } 
+
+
+    int matrix_1[company_count_1][50];
+        for(int a = 0; a < company_count_1; a++)
+        for(int b = 0; b < 50; b++)
+            matrix_1[a][b] = -1;
+
+    matrix_1[0][0] = 2;
+    a = 0;
+    b = 0;
+    for(int i = 2; i < length_1; i++){
+        if(url_1[i] == '\0'){
+            b++;
+            if(url_1[i+1] == '!' && url_1[i+2] == '\0'){
+                i++;
+                i++;
+                a++;
+                b=0;
+            if(url_1[i+1] == '\0')
+                break;
+            }
+            matrix_1[a][b] = i + 1;
+        }
+    }
+
+    // for(int a = 0; a < company_count_1; a++)
+    //     for(int b = 0; b < 50; b++)
+    //         if(matrix_1[a][b] != -1){
+    //             puts(url_1 + matrix_1[a][b]);
+    //         } 
+
+    for(int a_0 = 0; a_0 < company_count_0; a_0++){
+        for(int a_1 = 0; a_1 < company_count_1; a_1++){
+            int matched_count = 0;
+            for(int b_0 = 0; b_0 < set_len; b_0++){
+                for(int b_1 = 0; b_1 < set_len; b_1++){
+                    int len_temp = strlen(url_0 + matrix_1[a_0][b_0]);
+                    if(len_temp == strlen(url_1 + matrix_1[a_1][b_1])){
+                        if(fast_compare(url_0 + matrix_1[a_0][b_0], url_1 + matrix_1[a_1][b_1], len_temp) == 0){
+                            matched_count++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
 
 
