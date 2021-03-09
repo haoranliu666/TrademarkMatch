@@ -20,6 +20,12 @@ int main(int argc, char *argv[])
 
     char file_name_1[30] = "url_crsp_random.txt";
 
+    char file_name_out[30] = "c_result_setlen_";
+    strcat (file_name_out, argv[2]);
+    strcat (file_name_out, "_");
+    strcat (file_name_out, argv[1]);
+    strcat (file_name_out, ".txt");
+
     int set_len = atoi(argv[2]);
 
     /***********************************************************************
@@ -201,7 +207,7 @@ int main(int argc, char *argv[])
     ************************************************************************/
 
     FILE *fp = NULL;
-    fp = fopen("write.txt", "w");
+    fp = fopen(file_name_out, "w");
 
     for(int a_0 = 0; a_0 < company_count_0; a_0++){
         for(int a_1 = 0; a_1 < company_count_1; a_1++){
