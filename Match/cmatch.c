@@ -11,9 +11,16 @@
 //https://mgronhol.github.io/fast-strcmp/
 int fast_compare(const char *ptr0, const char *ptr1, int len);
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    int set_len = 5;
+    
+    char file_name_0[30] = "url_dict_";
+    strcat (file_name_0, argv[1]);
+    strcat (file_name_0, ".txt");
+
+    char file_name_1[30] = "url_crsp_random.txt";
+
+    int set_len = atoi(argv[2]);
 
     /***********************************************************************
     READ TWO FILES
@@ -24,8 +31,8 @@ int main(void)
     size_t length_0, length_1;
     size_t read_length_0, read_length_1;
     
-    FILE * f_0 = fopen("url_dict_1.txt", "rb");
-    FILE * f_1 = fopen("url_crsp_random.txt", "rb");
+    FILE * f_0 = fopen(file_name_0, "rb");
+    FILE * f_1 = fopen(file_name_1, "rb");
     
     if (f_0 && f_1)
     {
@@ -188,12 +195,22 @@ int main(void)
     //             puts(url_1 + matrix_1[a][b]);
     //         } 
 
+
+    /***********************************************************************
+    MAKING TWO MATRICES OVER, START MATCHING
+    ************************************************************************/
+
+    FILE *fp = NULL;
+    fp = fopen("write.txt", "w");
+
     for(int a_0 = 0; a_0 < company_count_0; a_0++){
         for(int a_1 = 0; a_1 < company_count_1; a_1++){
             int matched_count = 0;
             for(int b_0 = 0; b_0 < set_len; b_0++){
                 for(int b_1 = 0; b_1 < set_len; b_1++){
-                    int len_temp = strlen(url_0 + matrix_1[a_0][b_0]);
+                    if(matrix_0[a_0][b_0] == -1 || matrix_1[a_1][b_1] == -1)
+                        continue;
+                    int len_temp = strlen(url_0 + matrix_0[a_0][b_0]);
                     if(len_temp == strlen(url_1 + matrix_1[a_1][b_1])){
                         if(fast_compare(url_0 + matrix_1[a_0][b_0], url_1 + matrix_1[a_1][b_1], len_temp) == 0){
                             matched_count++;
@@ -201,10 +218,13 @@ int main(void)
                     }
                 }
             }
+            if(matched_count != 0)
+                fprintf(fp, "(%d, %d): %d\n", a_0, a_1, matched_count);
         }
     }
 
-
+    fclose(fp);
+    printf("Match succeeded.\n");
 
 
     free(buffer);
