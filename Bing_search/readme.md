@@ -1,21 +1,18 @@
-# Bing网页搜索API
+# Azure Bing API
 
-- [官方文档](https://docs.microsoft.com/zh-cn/azure/cognitive-services/bing-web-search/overview)
-- [search方法(实例 web_data)](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)
-- [search返回](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.searchresponse?view=azure-python)
-- [web_pages方法(实例 web_data.web_pages)](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.webwebanswer?view=azure-python)
-- [value方法(实例 web_data.web_pages.value[0])](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.webpage?view=azure-python)
-- [ClientRawResponse(实例raw=True的 web_data)](https://docs.microsoft.com/zh-cn/python/api/msrest/msrest.pipeline.clientrawresponse?view=azure-pythonClientRawResponse)
+- [Official Manual](https://docs.microsoft.com/zh-cn/azure/cognitive-services/bing-web-search/overview)
+- [search(web_data)](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)
+- [search return](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.searchresponse?view=azure-python)
+- [web_pages(web_data.web_pages)](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.webwebanswer?view=azure-python)
+- [value(web_data.web_pages.value[0])](https://docs.microsoft.com/zh-cn/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.models.webpage?view=azure-python)
+- [ClientRawResponse(raw=True的 web_data)](https://docs.microsoft.com/zh-cn/python/api/msrest/msrest.pipeline.clientrawresponse?view=azure-pythonClientRawResponse)
 
 
-# Step 1 安装
-首先在控制台安装bing search包，要2.0.0版本，原代码采用的包为2019年的1.0.0版本，代码不兼容，需要更新
+# Step 1 Install
 > pip install azure-cognitiveservices-search-websearch==2.0.0
 
-# Step 2 导入
+# Step 2 Import
 ```python
-#进入python环境
-# Import required modules.
 from azure.cognitiveservices.search.websearch import WebSearchClient
 from azure.cognitiveservices.search.websearch.models import SafeSearch
 from msrest.authentication import CognitiveServicesCredentials
@@ -27,7 +24,7 @@ subscription_key = "xxxxxx"
 client = WebSearchClient(endpoint="zzzzzz", credentials=CognitiveServicesCredentials(subscription_key))
 ```
 
-# Step 3 测试
+# Step 3 Test
 ```python
 # Make a request. Replace Yosemite if you'd like.
 web_data = client.web.search(query="apple", count = 50)
@@ -41,7 +38,7 @@ for i in range(0,len(web_data.web_pages.value)):
 ```
 
 
-### 一些有用的返回值
+### Some useful return value
 ```python 
 #original_query
 web_data.query_context.original_query
