@@ -1,9 +1,14 @@
-use /Users/haoranliu/match/Trademark/Original_data/crsp/21jfye9kmoqem2l5.dta, clear
+use /Users/haoranliu/match/Trademark/Original_data/crsp/0fn_0list_crspnames_new.dta, clear
 
-rename PERMNO id
-rename HCOMNAM name
+
+gen num = _n
+rename num id
+rename fn_crspmsf name
+keep id name
 sort name id
 by name: keep if _n==1
 sort id
 
-use /Users/haoranliu/match/Trademark/My_data/crsp/crsp.dta, replace
+save /Users/haoranliu/match/Trademark/My_data/crsp/crsp.dta, replace
+
+exit

@@ -19,3 +19,5 @@ by name: keep if _n==1
 sort id
 
 save /Users/haoranliu/match/Trademark/My_data/tmc/tmc.dta, replace
+
+exit
