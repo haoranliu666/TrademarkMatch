@@ -1,6 +1,6 @@
 use /Users/haoranliu/match/Trademark/Original_data/tma/tm_assignor.dta, clear
 
-*note: rf_id cannot identically identify the data
+*id is generated from original order of the data
 gen num = _n
 rename or_name name
 rename num id
@@ -81,7 +81,7 @@ or_natlty == "" ///
 keep name id
 sort id
 
-save /Users/haoranliu/match/Trademark/My_data/tma/tma_assignor.dta, replace
+save /Users/haoranliu/match/Trademark/My_data/tma_assignor.dta, replace
 
 
 exit

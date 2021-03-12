@@ -11,13 +11,12 @@ gen temp4 = 1 if own_nalty_country_cd != "US" & own_nalty_country_cd != "CA"
 drop if temp1 == 1 & temp2 == 1 & temp3 == 1 & temp4 == 1
 
 *drop duplication
-keep own_name own_id
 rename own_name name
 rename own_id id
+keep name id
 sort name id
 by name: keep if _n==1
-sort id
 
-save /Users/haoranliu/match/Trademark/My_data/tmc/tmc.dta, replace
+save /Users/haoranliu/match/Trademark/My_data/tmc.dta, replace
 
 exit

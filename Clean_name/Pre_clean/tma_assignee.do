@@ -1,11 +1,8 @@
 use /Users/haoranliu/match/Trademark/Original_data/tma/tm_assignee.dta, clear
 
-*note: rf_id cannot identically identify the data
-gen num = _n
+*id is generated from original order of the data
+gen id = _n
 rename ee_name name
-rename num id
-sort name id
-by name: keep if _n==1
 
 drop if ee_legal_entity_text == "INDIVIDUAL"
 
@@ -77,11 +74,10 @@ ee_natlty == "" ///
 | ee_natlty == "PUERTO RICO" ///
 | ee_natlty == "VIRGIN ISLANDS"
 
-
 keep name id
-sort id
+sort name id
+by name: keep if _n==1
 
-save /Users/haoranliu/match/Trademark/My_data/tma/tma_assignee.dta, replace
-
+save /Users/haoranliu/match/Trademark/My_data/tma_assignee.dta, replace
 
 exit
