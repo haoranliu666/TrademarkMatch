@@ -1,11 +1,8 @@
 use /Users/haoranliu/match/Trademark/Original_data/tma/tm_assignor.dta, clear
 
 *id is generated from original order of the data
-gen num = _n
+gen id = _n
 rename or_name name
-rename num id
-sort name id
-by name: keep if _n==1
 
 drop if or_legal_entity_text == "INDIVIDUAL"
 
@@ -15,7 +12,6 @@ or_country == "" ///
 | or_country == "CANADA" ///
 | or_country == "VIRGIN ISLANDS, U.S." ///
 | or_country == "GUAM"
-
 
 keep if ///
 or_natlty == "" ///
@@ -79,9 +75,9 @@ or_natlty == "" ///
 | or_natlty == "VIRGIN ISLANDS"
 
 keep name id
-sort id
+sort name id
+by name: keep if _n==1
 
 save /Users/haoranliu/match/Trademark/My_data/tma_assignor.dta, replace
-
 
 exit
