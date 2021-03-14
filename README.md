@@ -2,6 +2,10 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 
 ### Time line
+2021/03/14
+- Bug fixes.
+- Added post-clean.
+- Todo: finish bing_seach, and cppmatch
 
 2021/03/09
 - Added cmatch.c, try to do the match process using C instead of Python for performance improvement, still in progress.
