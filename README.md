@@ -4,7 +4,7 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 ### Time line
 2021/03/14
 - Bug fixes.
-- Added post-clean.
+- Changed Post-clean totally, using TF-IDF for fuzzy matching, and using state data to make sure the matching is correct.
 - Todo: finish bing_seach, and cppmatch
 
 2021/03/09
