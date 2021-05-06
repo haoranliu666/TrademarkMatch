@@ -10,11 +10,15 @@
 
 1. Get raw data: Compustat, CRSP, Capital IQ(CIQ), Trademark Assignor(TMA) assignor and assignee, Trademark Case File(TMC);
 2. Drop duplicated name, and assign unique id;
-3. For TMA and TMC, remove individual owner and companies outside US and CA.
+3. For TMA and TMC, remove individual owner and companies outside US and CA;
+4. Heath and Mace matched Trademark Case File to Compustat. We confirm his match result and dorp his matched names from TMC, TMA_assignor, and TMA assignee.
+5. Own type cd greater than 40 is a sign of sold trademark, we can drop them.
 
-| After Pre-clean | COMPUSTAT | CRSP   | CIQ     | TMA_assignor | TMA_assignee | TMC       | Total     |
-| --------------- | --------- | ------ | ------- | ------------ | ------------ | --------- | --------- |
-| Observations    | 40,220    | 41,812 | 700,632 | 537,327      | 446,377      | 2,554,580 | 4,322,117 |
+| After Pre-clean | COMPUSTAT | CRSP   | CIQ     | TMA_assignor | TMA_assignee | TMC       |
+| --------------- | --------- | ------ | ------- | ------------ | ------------ | --------- |
+| Observations    | 40,220    | 41,812 | 700,632 | 537,327      | 446,377      | 2,554,580 |
+| Dropped HM      |           |        |         | 520,141      | 424,163      | 2,499,201 |
+| Dropped HM, >40 |           |        |         |              |              | 2,457,858 |
 
 ## Clean [(link)](https://github.com/FutureMathematician/TrademarkMatch/tree/main/Clean_name/Clean)
 
@@ -111,9 +115,11 @@
 - ho-chunk, inc.,
 
 
-| After Clean  | COMPUSTAT | CRSP   | CIQ     | TMA_assignor | TMA_assignee | TMC       | Total     |
-| ------------ | --------- | ------ | ------- | ------------ | ------------ | --------- | --------- |
-| Observations | 40,204    | 41,799 | 698,695 | 509,103      | 422,415      | 2,085,101 | 3,013,094 |
+| After Clean     | COMPUSTAT | CRSP   | CIQ     | TMA_assignor | TMA_assignee | TMC       | Total     |
+| --------------- | --------- | ------ | ------- | ------------ | ------------ | --------- | --------- |
+| Observations    | 40,204    | 41,799 | 698,695 | 509,103      | 422,415      | 2,085,101 | 3,013,094 |
+| Dropped HM      |           |        |         | 495,565      | 403,248      | 2,064,771 | 3,005,901 |
+| Dropped HM, >40 |           |        |         |              |              | 2,041,898 | 2,998,636 |
 
 ## Post-clean [(link)](https://github.com/FutureMathematician/TrademarkMatch/tree/main/Clean_name/Post_clean)
 
@@ -224,13 +230,18 @@ TF-IDF is very useful in text classification and text clustering. It is used to 
 | After Post-clean | COMPUSTAT | CRSP   | CIQ     | TMA_assignor | TMA_assignee | TMC       | Total     |
 | ---------------- | --------- | ------ | ------- | ------------ | ------------ | --------- | --------- |
 | Observations     | 40,204    | 41,799 | 698,695 | 499,327      | 413,176      | 2,014,748 | 2,954,241 |
+| Dropped HM       |           | -      |         | 493,009      | 401,223      | 1,996,098 | 2,911,666 |
+| Dropped >40      |           | -      |         |              |              | 1,975,236 | 2,905,517 |
 
 
 
 ## Cost
 
 ![截屏2021-03-14 14.49.35](https://tva1.sinaimg.cn/large/e6c9d24egy1gojfqddryhj21c00u0qv5.jpg)
-$$
-(2,954,241/1000)*23.28HKD=68,774HKD
-$$
-For full 6 data searching, TMA assignor + assignee + TMC + CIQ + COMPUSTAT + CRSP will cost arount 70,000 HKD.
+
+| After Post-clean | Total     | Cost       |
+| ---------------- | --------- | ---------- |
+| Observations     | 2,954,241 | 68,775 HKD |
+| Dropped HM       | 2,911,666 | 67,783 HKD |
+| Dropped >40      | 2,905,517 | 67,640 HKD |
+
