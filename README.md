@@ -3,8 +3,11 @@ step to step guide: [steps](https://github.com/FutureMathematician/TMA_match/blo
 
 ### Time line
 
+2021/06/01
+- Added fuzzy match process.
+
 2021/04/27
-- Rebuild work of H&M
+- Rebuild the work of H&M.
 
 2021/03/14
 - Bug fixes.
